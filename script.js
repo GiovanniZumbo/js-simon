@@ -18,6 +18,7 @@ const givenNumbers = document.getElementById('givennumbers');
 const resultElement = document.getElementById('result');
 const inputs = document.querySelectorAll('input');
 const form = document.querySelector('form');
+const timer = document.getElementById('timer');
 
 
 // * Creo un array dove mettere i numeri casuali
@@ -45,8 +46,19 @@ function getUserNumbers() {
     console.log('usernumbers: ', userNumbers)
 }
 
+// ------- Starting phase ------ //
 
-// random numbers
+// * Creo un timer di 30 secondi
+
+let seconds = 30;
+timer.innerText = seconds;
+
+const timerInterval = setInterval(() => {
+    timer.innerText = --seconds;
+    if (seconds === 0) clearInterval(timerInterval);
+}, 1000);
+
+// --- Random numbers ----
 
 // * Creo 5 numeri random
 

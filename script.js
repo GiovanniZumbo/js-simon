@@ -16,6 +16,8 @@ Generiamo gli input da JS, invece di scriverli nel codice
 // * Recupero gli elementi dal DOM
 const givenNumbers = document.getElementById('givennumbers');
 const resultElement = document.getElementById('result');
+const startwindow = document.getElementById('startwindow');
+const userwindow = document.getElementById('userwindow');
 const inputs = document.querySelectorAll('input');
 const form = document.querySelector('form');
 const timer = document.getElementById('timer');
@@ -55,7 +57,15 @@ timer.innerText = seconds;
 
 const timerInterval = setInterval(() => {
     timer.innerText = --seconds;
-    if (seconds === 0) clearInterval(timerInterval);
+    if (seconds === 0) {
+        clearInterval(timerInterval);
+
+        startwindow.classList.remove('d-flex');
+        startwindow.classList.add('d-none');
+
+        userwindow.classList.remove('d-none');
+        userwindow.classList.add('d-flex');
+    }
 }, 1000);
 
 // --- Random numbers ----
@@ -71,7 +81,7 @@ for (i = 0; i < 5; i++) {
 console.log(randomNumbers);
 
 // * Li stampo in pagina
-givenNumbers.innerHTML = randomNumbers;
+givenNumbers.innerHTML = randomNumbers.join(' ');
 
 
 // # DATA GATHERING
@@ -97,7 +107,7 @@ form.addEventListener('submit', function (event) {
 
     // * Stampo in pagina il risultato
 
-    let message = `Hai memorizzato correttamente ${correctNumbers.length} numero/i! (${correctNumbers})`
+    let message = `Hai memorizzato correttamente ${correctNumbers.length} numero/i! (${correctNumbers.join(' - ')})`
 
     resultElement.innerHTML = message;
 

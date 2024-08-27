@@ -14,30 +14,49 @@ Generiamo gli input da JS, invece di scriverli nel codice
 
 // * Recupero gli elementi dal DOM
 const givenNumbers = document.getElementById('givennumbers');
+const resultElement = document.getElementById('result');
 
 // * Creo un array dove mettere i numeri casuali
 const randomNumbers = [];
+// * Array dove arriveranno i numeri dell'utente
+const userNumbers = [81, 57, 16, 24, 54];
+// * Array con i numeri corretti
+const correctNumbers = [];
+
+// * Creo il messaggio che apparirà a fine gioco.
+let message = `Hai memorizzato correttamente ${correctNumbers.length} numeri! (${correctNumbers})`
+
 
 // * Creo 5 numeri casuali con una funzione
-
 function getRandomNumbers(min = 1, max = 100, isMaxIncluded = true) {
     if (isMaxIncluded) max++;
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-// Li inserisco all'interno dell'array
-
+// * Li inserisco all'interno dell'array
 for (i = 0; i < 5; i++) {
     const fiveNumbers = getRandomNumbers();
     randomNumbers.push(fiveNumbers);
 }
 console.log(randomNumbers);
+
+// * Li inserisco in pagina
 givenNumbers.innerHTML = randomNumbers;
 
 
+// "Dati 2 array di numeri, indica quali e quanti numeri ci sono in comune tra i due array"
 
-// Li inserisco in pagina
+// * Confrontare numeri in comune
 
+for (let i = 0; i < userNumbers.length; i++) {
+    let userNumber = userNumbers[i];
+    // Se nel mio array c'è il numero dell'utente, mettilo nell'array dei corretti
+    if (randomNumbers.includes(userNumber)) {
+        correctNumbers.push(userNumber);
+    }
+}
+
+resultElement.innerHTML = message;
 
 // # STAGING
 

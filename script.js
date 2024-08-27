@@ -10,20 +10,24 @@ BONUS 2:
 Generiamo gli input da JS, invece di scriverli nel codice
 */
 
-/* Visualizzare in pagina 5 numeri casuali. */
+
+// # STAGING
 
 // * Recupero gli elementi dal DOM
 const givenNumbers = document.getElementById('givennumbers');
 const resultElement = document.getElementById('result');
+const inputs = document.querySelectorAll('input[type = "number"]');
+const form = document.querySelector('form');
+
 
 // * Creo un array dove mettere i numeri casuali
 const randomNumbers = [];
-// * Array dove arriveranno i numeri dell'utente
-const userNumbers = [81, 57, 16, 24, 54];
 // * Array con i numeri corretti
 const correctNumbers = [];
+// * Array dove arriveranno i numeri dell'utente
+const userNumbers = [];
 
-
+// @ FUNCTIONS 
 
 // * Creo 5 numeri casuali con una funzione
 function getRandomNumbers(min = 1, max = 100, isMaxIncluded = true) {
@@ -31,6 +35,17 @@ function getRandomNumbers(min = 1, max = 100, isMaxIncluded = true) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
+// funzione per inserire i numeri dell'utente dal form a JS
+
+function getUserNumbers(event) {
+    event.preventDefault();
+
+    userNumbers.push(inputs);
+    console.log('usernumbers: ', userNumbers)
+}
+
+
+// random numbers
 // * Li inserisco all'interno dell'array
 for (i = 0; i < 5; i++) {
     const fiveNumbers = getRandomNumbers();
@@ -40,6 +55,12 @@ console.log(randomNumbers);
 
 // * Li inserisco in pagina
 givenNumbers.innerHTML = randomNumbers;
+
+// # DATA GATHERING
+
+form.addEventListener('submit', getUserNumbers);
+
+
 // "Dati 2 array di numeri, indica quali e quanti numeri ci sono in comune tra i due array"
 
 // * Confrontare numeri in comune
@@ -57,9 +78,8 @@ let message = `Hai memorizzato correttamente ${correctNumbers.length} numero/i! 
 
 resultElement.innerHTML = message;
 
-// # STAGING
 
-// # DATA GATHERING
+
 // # EVENT HANDLING
 // # PROCESSING
 // # OUTPUT 

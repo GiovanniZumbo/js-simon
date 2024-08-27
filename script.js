@@ -23,8 +23,6 @@ const userNumbers = [81, 57, 16, 24, 54];
 // * Array con i numeri corretti
 const correctNumbers = [];
 
-// * Creo il messaggio che apparirà a fine gioco.
-let message = `Hai memorizzato correttamente ${correctNumbers.length} numeri! (${correctNumbers})`
 
 
 // * Creo 5 numeri casuali con una funzione
@@ -42,8 +40,6 @@ console.log(randomNumbers);
 
 // * Li inserisco in pagina
 givenNumbers.innerHTML = randomNumbers;
-
-
 // "Dati 2 array di numeri, indica quali e quanti numeri ci sono in comune tra i due array"
 
 // * Confrontare numeri in comune
@@ -55,6 +51,9 @@ for (let i = 0; i < userNumbers.length; i++) {
         correctNumbers.push(userNumber);
     }
 }
+
+// * Creo il messaggio che apparirà a fine gioco.
+let message = `Hai memorizzato correttamente ${correctNumbers.length} numero/i! (${correctNumbers})`
 
 resultElement.innerHTML = message;
 

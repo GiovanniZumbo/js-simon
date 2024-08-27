@@ -1,0 +1,20 @@
+/* Css reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Generics */
+
+body {
+    font-family: Montserrat, 'Helvetica Neue', sans-serif;
+}
+
+/* Utilities */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
